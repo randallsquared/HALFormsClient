@@ -7,7 +7,17 @@ let showform = (halform) => {
 };
 
 let getform = (link) => {
-  console.log(link.key);
+  let response = new Promise((resolve, reject) => {
+    $.ajax({
+      method: "GET",
+      done: (data, textSuccess, xhr) => {
+        console.log(xhr);
+        resolve();
+      },
+      fail: () => fail()
+    });
+  });
+
 };
 
 let gethal = (doc) => {
