@@ -9,12 +9,13 @@ let showform = (halform) => {
 let getform = (link) => {
   return new Promise((resolve, reject) => {
     $.ajax({
+      url: link.key,
       method: "GET",
       done: (data, textSuccess, xhr) => {
         console.log(xhr);
         resolve();
       },
-      fail: () => fail()``
+      fail: () => reject()
     });
   });
 
