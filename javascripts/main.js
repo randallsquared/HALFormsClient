@@ -2,7 +2,7 @@
 
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
-let showform = (halform) {
+let showform = (halform) => {
   console.log('showing form...');
 };
 
@@ -10,7 +10,7 @@ let getform = (link) => {
   console.log(link.key);
 };
 
-let halstart = (doc) => {
+let gethal = (doc) => {
   let response = Promise.resolve($.get(doc))
   let hal = response.then(haldoc => JSON.parse(haldoc)).tap(console.log);
   let links = hal.then(doc => {
