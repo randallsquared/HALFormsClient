@@ -10,6 +10,7 @@ let getform = (link) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: link.key,
+      headers: {Accept: 'application/prs.hal-forms+json'},
       method: "GET",
       done: (data, textSuccess, xhr) => {
         console.log(xhr);
