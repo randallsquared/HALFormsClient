@@ -3,11 +3,9 @@
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
 
-let startup =  () => {
-  console.log('startup');
-  let result = Promise.resolve($.get(task_root));
-
-  result.then(checking => console.log(checking));
+let halstart = (doc) => {
+  let hal = Promise.resolve($.get(doc))
+    .then(haldoc => JSON.parse(haldoc));
 };
 
 /*
@@ -24,4 +22,4 @@ let startup =  () => {
 
 
 
-$(document).ready(() => startup());
+$(document).ready(() => halstart(task_root));
