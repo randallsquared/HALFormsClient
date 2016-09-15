@@ -16,7 +16,9 @@ let gethal = (doc) => {
   let links = hal.then(doc => {
     let links = [];
     for (let key in doc._links) {
+      console.log('link', key);
       if (key.substring(0, 3) === "http") {
+        console.log("was http...");
         links.push({ key: key, meta: doc._links[key] });
       }
     }
