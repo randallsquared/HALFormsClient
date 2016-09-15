@@ -3,7 +3,7 @@
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
 let loadtemplate = (name) => {
-  return $(`${name}`).innerText();
+  return $(`#${name}`).innerText;
 };
 
 let showforms = (halform) => {
@@ -11,8 +11,12 @@ let showforms = (halform) => {
   let templates = halform._templates;
   for (let key in templates) {
     let stringtemplate = loadtemplate(formtemplate);
+    stringtemplate.replace('{{formid}}', templates[key]);
+    stringtemplate.replace('{{title}}', templates[key].title);
+    stringtemplate.replace('{{method}}', templates[key].method);
     console.log(stringtemplate);
   }
+  return true;
 };
 
 let getform = (link) => {
