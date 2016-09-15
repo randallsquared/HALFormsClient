@@ -2,8 +2,17 @@
 
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
-let showform = (halform) => {
+let loadtemplate = (name) => {
+  return $(`${name}`).innerText();
+};
+
+let showforms = (halform) => {
   console.log('showing form...:', halform);
+  let templates = halform._templates;
+  for (let key in templates) {
+    let stringtemplate = loadtemplate(formtemplate);
+    console.log(stringtemplate);
+  }
 };
 
 let getform = (link) => {
@@ -42,7 +51,7 @@ let gethal = (doc) => {
   });
   linkObjects.tap(console.log);
   Promise.map(linkObjects, (linkObject) => {
-    return getform(linkObject).then(showform);
+    return getform(linkObject).then(showforms);
   });
 };
 
@@ -62,4 +71,6 @@ let gethal = (doc) => {
 
 
 
-$(document).ready(() => gethal(task_root));
+$(document).ready(() => {
+  gethal(task_root);
+});
