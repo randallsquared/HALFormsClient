@@ -3,7 +3,7 @@
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
 let showform = (halform) => {
-  console.log('showing form...');
+  console.log('showing form...:', halform);
 };
 
 let getform = (link) => {
@@ -14,7 +14,7 @@ let getform = (link) => {
       method: "GET",
       success: (data, textSuccess, xhr) => {
         console.log(xhr);
-        resolve();
+        resolve(xhr.responseJSON);
       },
       fail: (xhr) => {
         console.log(xhr);
