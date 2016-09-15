@@ -1,5 +1,7 @@
-var startup = function() {
-  console.log('startup')
-};
+$(function ($) {
+  var startup = function () {
+    console.log('startup')
+  };
 
-$(startup);
+  startup();
+});
