@@ -30,7 +30,8 @@ let gethal = (doc) => {
       console.log('link', key.substring(0, 4));
       if (key.substring(0, 4) === "http") {
         console.log("was http...");
-        links.push({ key: key, meta: doc._links[key] });
+
+        links.push({ key: 'https'+key.substring(4), meta: doc._links[key] });
       }
     }
     return links;
