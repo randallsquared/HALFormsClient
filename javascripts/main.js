@@ -16,7 +16,10 @@ let getform = (link) => {
         console.log(xhr);
         resolve();
       },
-      fail: () => reject()
+      fail: () => {
+        console.log(xhr);
+        reject();
+      }
     });
   });
 
