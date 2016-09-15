@@ -23,7 +23,7 @@ let gethal = (doc) => {
     return links;
   });
   links.tap(console.log);
-  Promise.props(links, (linkObject) => {
+  Promise.map(links, (linkObject) => {
     return getform(linkObject).then(showform);
   });
 };
