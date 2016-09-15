@@ -2,12 +2,33 @@
 
 let task_root = 'https://rwcbook08.herokuapp.com/task/';
 
+let showform = (halform) {
+  console.log('showing form...');
+};
+
+let getform = (link) => {
+  console.log(link.key);
+};
 
 let halstart = (doc) => {
-  let hal = Promise.resolve($.get(doc))
-    .then(haldoc => JSON.parse(haldoc));
-  hal.then(doc => console.log(doc._links));
+  let response = Promise.resolve($.get(doc))
+  let hal = response.then(haldoc => JSON.parse(haldoc)).tap(console.log);
+  let links = hal.then(doc => {
+    let links = [];
+    for (key in doc._links) {
+      if (key.substring(0, 3) === "http") {
+        links.push({ key: key, meta: doc._links[key] });
+      }
+    }
+    return links;
+  });
+  links.tap(console.log);
+  Promise.props(links, (linkObject) => {
+    return getform(linkObject).then(showform);
+  });
 };
+
+
 
 /*
 - get URL
@@ -23,4 +44,4 @@ let halstart = (doc) => {
 
 
 
-$(document).ready(() => halstart(task_root));
+$(document).ready(() => gethal(task_root));
