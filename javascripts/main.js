@@ -6,7 +6,7 @@ let task_root = 'https://rwcbook08.herokuapp.com/task/';
 let halstart = (doc) => {
   let hal = Promise.resolve($.get(doc))
     .then(haldoc => JSON.parse(haldoc));
-  console.log(hal._links);
+  hal.then(doc => console.log(doc._links));
 };
 
 /*
