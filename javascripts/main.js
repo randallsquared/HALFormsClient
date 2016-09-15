@@ -12,11 +12,11 @@ let getform = (link) => {
       url: link.key,
       headers: {Accept: 'application/prs.hal-forms+json'},
       method: "GET",
-      done: (data, textSuccess, xhr) => {
+      success: (data, textSuccess, xhr) => {
         console.log(xhr);
         resolve();
       },
-      fail: () => {
+      fail: (xhr) => {
         console.log(xhr);
         reject();
       }
