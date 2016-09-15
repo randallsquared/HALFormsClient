@@ -13,10 +13,10 @@ let getform = (link) => {
 let gethal = (doc) => {
   let response = Promise.resolve($.get(doc))
   let hal = response.then(haldoc => JSON.parse(haldoc)).tap(console.log);
-  let links = hal.then(doc => {
+  let linkObjects = hal.then(doc => {
     let links = [];
     for (let key in doc._links) {
-      console.log('link', key);
+      console.log('link', key.substring(0, 3));
       if (key.substring(0, 3) === "http") {
         console.log("was http...");
         links.push({ key: key, meta: doc._links[key] });
@@ -24,8 +24,8 @@ let gethal = (doc) => {
     }
     return links;
   });
-  links.tap(console.log);
-  Promise.map(links, (linkObject) => {
+  linkObjects.tap(console.log);
+  Promise.map(linkObjects, (linkObject) => {
     return getform(linkObject).then(showform);
   });
 };
