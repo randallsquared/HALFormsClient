@@ -7,14 +7,14 @@ let showform = (halform) => {
 };
 
 let getform = (link) => {
-  let response = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     $.ajax({
       method: "GET",
       done: (data, textSuccess, xhr) => {
         console.log(xhr);
         resolve();
       },
-      fail: () => fail()
+      fail: () => fail()``
     });
   });
 
